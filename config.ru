@@ -1,2 +1,2 @@
-require './app'
-run Flickxtractr
+require 'flickxtractr/app'
+run Flickxtractr::App
