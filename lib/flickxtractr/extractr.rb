@@ -1,6 +1,7 @@
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
+require 'mini_exiftool'
 
 module Flickxtractr
   class Extractr
@@ -15,7 +16,8 @@ module Flickxtractr
     end
 
     def generate_image!
-      generate_image_file!
+      image_file = generate_image_file!
+      apply_meta_from_extract!(image_file)
     end
 
     def page_image_uri
@@ -81,10 +83,10 @@ module Flickxtractr
     end
 
     def apply_meta_from_extract!(image_file)
-      {
-        image:            image_file,
-        page:             page,
-      }
+      MiniExiftool.new(image_file.path).tap do |rmi|
+        image_meta.each { |k, v| rmi[k] = v }
+        rmi.save
+      end
     end
 
     def image_meta
