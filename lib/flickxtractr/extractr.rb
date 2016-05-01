@@ -39,6 +39,23 @@ module Flickxtractr
       find(:css, "h1.photo-title").text
     end
 
+    def page_image_description
+      find(:css, "h2.photo-desc p").text
+    end
+
+    def page_image_keywords
+      tag_links = all(:css, "ul.tags-list li a")
+      tag_links.collect { |a| a[:title] unless a.has_selector?(".remove-tag") }.compact.join("; ")
+    end
+
+    def page_owner_name
+      find(:css, "div.attribution-info a.owner-name.truncate").text
+    end
+
+    def page_owner_profile
+      "https://www.flickr.com#{find(:css, "div.attribution-info a.owner-name.truncate")[:href]}"
+    end
+
     private
 
     def initialize_capybara!
@@ -61,6 +78,23 @@ module Flickxtractr
           end
         end
       end
+    end
+
+    def apply_meta_from_extract!(image_file)
+      {
+        image:            image_file,
+        page:             page,
+      }
+    end
+
+    def image_meta
+      {
+        "Headline"     => page_image_title,
+        "Description"  => page_image_description,
+        "Keywords"     => page_image_keywords,
+        "Credit Line"  => page_owner_name,
+        "Source"       => url,
+      }
     end
   end
 end
