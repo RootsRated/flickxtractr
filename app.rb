@@ -1,7 +1,13 @@
 require 'sinatra'
 
 class Flickxtractr < Sinatra::Base
+  set :erb, :format => :html5
+
   get '/' do
-    "Hello, world!"
+    erb :home
+  end
+
+  post '/extract' do
+    "Extract!"
   end
 end
