@@ -19,6 +19,11 @@ Or install it yourself as:
 
     $ gem install flickxtractr
 
+Add dependent libraries:
+
+    $ brew install phantomjs
+    $ brew install exiftool
+
 ## Usage
 
 TODO: Write usage instructions here
