@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'flickxtractr/cli'
+  Flickxtractr::CLI.start(ARGV.dup)
+rescue LoadError => e
+  abort "#{e.inspect} - perhaps you need to run using `bundle exec`?"
+end
