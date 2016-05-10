@@ -11,5 +11,11 @@ module Flickxtractr
         `brew install #{dependency}`
       end
     end
+
+    desc "extract URL", "Extract and enrich flickr image"
+    def extract(flickr_url)
+      extractr = Flickxtractr::Extractr.new(flickr_url)
+      extractr.generate_image!
+    end
   end
 end
