@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "capybara"
   spec.add_dependency "mini_exiftool"
-  spec.add_dependency "sinatra"
   spec.add_dependency "poltergeist"
+  spec.add_dependency "sinatra"
+  spec.add_dependency "thor"
 end
