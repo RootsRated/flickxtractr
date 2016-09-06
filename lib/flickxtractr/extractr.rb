@@ -107,7 +107,7 @@ module Flickxtractr
         "Description"  => page_image_description,
         "Keywords"     => page_image_keywords,
         "Credit Line"  => page_owner_name,
-        "Source"       => url,
+        "Instructions" => url,
       }
     end
   end
