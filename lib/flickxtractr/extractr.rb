@@ -75,7 +75,7 @@ module Flickxtractr
     end
 
     def generate_image_file!
-      File.open(generated_image_file_name_with_extension, "wb").tap do |f|
+      File.open(File.join(Flickxtractr.dotfile.output_dir, generated_image_file_name_with_extension), "wb").tap do |f|
         Net::HTTP.start(page_image_uri.host) do |http|
           begin
             http.request_get(page_image_uri.path) do |resp|
@@ -91,7 +91,7 @@ module Flickxtractr
     end
 
     def generate_page_screenshot!
-      page.save_screenshot(generated_screenshot_file_name, full: true)
+      page.save_screenshot(File.join(Flickxtractr.dotfile.screenshot_dir, generated_screenshot_file_name), full: true)
     end
 
     def apply_meta_from_extract!(image_file)
