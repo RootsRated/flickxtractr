@@ -110,8 +110,8 @@ module Flickxtractr
         "Description"  => page_image_description,
         "Keywords"     => page_image_keywords,
         "Credit Line"  => page_owner_name,
-        "Source"       => shortened_url_for(url),
-        "Instructions" => shortened_url_for(public_screenshot_url),
+        "Source"       => shortened_url_for(url).short_url,
+        "Instructions" => shortened_url_for(public_screenshot_url).short_url,
       }
     end
 
