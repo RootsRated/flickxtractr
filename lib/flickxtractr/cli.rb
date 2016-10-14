@@ -7,9 +7,13 @@ module Flickxtractr
 
     desc "install", "Install library dependencies"
     def install
+      # Install Dependencies
       %w{ exiftool phantomjs }.each do |dependency|
         `brew install #{dependency}`
       end
+
+      # Generate dotfile
+      Dotfile.install unless Dotfile.exists?
     end
 
     desc "extract URL", "Extract and enrich flickr image"
