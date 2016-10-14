@@ -24,8 +24,8 @@ module Flickxtractr
 
     def page_image_uri
       @_page_image_uri ||= begin
-        find(:css, "div.download").click
-        within("div.download ul.sizes") do
+        find(:css, "div.download a").click
+        within("div.download-dialog-tooltip ul.sizes") do
           URI(find(:xpath, "./li[@class='Original']/a")[:href])
         end
       end
