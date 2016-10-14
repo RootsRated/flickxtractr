@@ -16,6 +16,8 @@ module Flickxtractr
     end
 
     def generate_image!
+      generate_page_screenshot!
+
       image_file = generate_image_file!
       apply_meta_from_extract!(image_file)
     end
