@@ -1,3 +1,4 @@
+require 'bitly'
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
@@ -109,8 +110,25 @@ module Flickxtractr
         "Description"  => page_image_description,
         "Keywords"     => page_image_keywords,
         "Credit Line"  => page_owner_name,
-        "Instructions" => url,
+        "Source"       => shortened_url_for(url),
       }
+    end
+
+    def shortened_url_for(url_to_shorten)
+      self.class.bitly_client.shorten(url_to_shorten)
+    end
+
+    def self.bitly_client
+      @_bitly_client ||= begin
+        Bitly.use_api_version_3
+
+        Bitly.configure do |config|
+          config.api_version  = 3
+          config.access_token = Flickxtractr.dotfile.bitly_access_token
+        end
+
+        Bitly.client
+      end
     end
   end
 end

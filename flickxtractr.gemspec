@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
 
+  spec.add_dependency "bitly"
   spec.add_dependency "capybara"
   spec.add_dependency "hashie", "~> 3.4"
   spec.add_dependency "mini_exiftool"
