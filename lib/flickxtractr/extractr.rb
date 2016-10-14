@@ -111,7 +111,12 @@ module Flickxtractr
         "Keywords"     => page_image_keywords,
         "Credit Line"  => page_owner_name,
         "Source"       => shortened_url_for(url),
+        "Instructions" => shortened_url_for(public_screenshot_url),
       }
+    end
+
+    def public_screenshot_url
+      "#{Flickxtractr.dotfile.screenshot_public_url_prefix}/#{generated_screenshot_file_name}"
     end
 
     def shortened_url_for(url_to_shorten)

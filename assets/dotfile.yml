@@ -1,3 +1,4 @@
 bitly_access_token:
 output_dir: ./
 screenshot_dir: ./
+screenshot_public_url_prefix:
