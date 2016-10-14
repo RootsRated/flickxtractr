@@ -50,7 +50,7 @@ module Flickxtractr
     end
 
     def page_image_description
-      find(:css, "h2.photo-desc p").text
+      all(:css, "h2.photo-desc p").collect(&:text).join("\n")
     end
 
     def page_image_keywords
