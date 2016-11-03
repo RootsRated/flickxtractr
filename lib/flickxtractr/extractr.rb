@@ -100,7 +100,7 @@ module Flickxtractr
     def apply_meta_from_extract!(image_file)
       MiniExiftool.new(image_file.path).tap do |rmi|
         image_meta.each { |k, v| rmi[k] = v }
-        rmi.save
+        rmi.save!
       end
     end
 
