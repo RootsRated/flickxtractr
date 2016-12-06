@@ -1,4 +1,5 @@
 bitly_access_token:
+ding_on_complete?: true
 output_dir: ./
 screenshot_dir: ./
 screenshot_public_url_prefix:

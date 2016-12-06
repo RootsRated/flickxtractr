@@ -38,6 +38,8 @@ module Flickxtractr
         extractr.generated_image_file_name_with_extension,
         extractr.generated_screenshot_file_name,
       )
+
+      ding! if Flickxtractr.dotfile.ding_on_complete?
     end
 
     private
@@ -58,6 +60,10 @@ module Flickxtractr
 
     def clear_output!
       8.times { print "\033[A", "\033[K" }
+    end
+
+    def ding!
+      print "\a"
     end
   end
 end
